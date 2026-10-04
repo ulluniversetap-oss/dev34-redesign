@@ -343,7 +343,7 @@ ul{margin:0;padding:0;list-style:none}
   box-shadow:0 1px 0 var(--line);transition:box-shadow var(--t) var(--e), transform var(--t) var(--e)}
 .jk:hover{box-shadow:0 20px 44px rgba(15,21,27,.12);transform:translateY(-3px)}
 
-.jk__ph{position:relative;aspect-ratio:4/3;overflow:hidden;flex:none;background:var(--bg-2)}
+.jk__ph{position:relative;aspect-ratio:4/2.7;overflow:hidden;flex:none;background:var(--bg-2)}
 .jk__ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 900ms var(--e)}
 .jk:hover .jk__ph img{transform:scale(1.06)}
 .jk__status{position:absolute;top:14px;left:14px;z-index:2}
@@ -457,6 +457,71 @@ ul{margin:0;padding:0;list-style:none}
 .ofnote{font-size:12.5px;color:var(--ink-3);margin-top:clamp(18px,2.2vw,26px)}
 
 /* ═══════════════════════════════════════════════════════════
+   04 · РАСПОЛОЖЕНИЕ И ИНФРАСТРУКТУРА
+   ═══════════════════════════════════════════════════════════ */
+.mapbox{display:grid;grid-template-columns:360px 1fr;border-radius:var(--r-bento);
+  overflow:hidden;background:#fff}
+
+/* ── левая панель ── */
+.mpanel{display:flex;flex-direction:column;background:#fff;border-right:1px solid var(--line);
+  max-height:640px}
+.mpanel__hd{padding:clamp(26px,2.4vw,32px) clamp(24px,2vw,30px) 20px}
+.mpanel__hd .h4{font-size:19px;font-weight:700;letter-spacing:-.022em}
+.mpanel__addr{font-size:13.5px;color:var(--ink-3);margin-top:5px}
+.mpanel__chip{display:inline-flex;align-items:center;gap:7px;margin-top:16px;height:32px;
+  padding:0 14px;border-radius:var(--r-pill);background:var(--gold-tint);color:var(--gold-dp);
+  font-size:13px;font-weight:600}
+.mpanel__chip svg{width:13px;flex:none}
+
+.mpanel__list{overflow-y:auto;flex:1;padding:6px 10px}
+.mpanel__list::-webkit-scrollbar{width:4px}
+.mpanel__list::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:2px}
+.poi{display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+  padding:11px 10px;border-radius:14px;transition:background var(--t-fast) var(--e)}
+.poi:hover{background:var(--bg-2)}
+.poi__b{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--line-2);flex:none;
+  display:grid;place-items:center;transition:var(--t-fast) var(--e)}
+.poi__b svg{width:11px;opacity:0;color:#fff;transition:var(--t-fast) var(--e)}
+.poi.on .poi__b{background:var(--gold);border-color:var(--gold)}
+.poi.on .poi__b svg{opacity:1}
+.poi__n{flex:1;font-size:14.5px;color:var(--ink-2);min-width:0}
+.poi.on .poi__n{color:var(--ink);font-weight:500}
+.poi__c{font-size:13.5px;color:var(--ink-3);font-weight:500;flex:none}
+
+.mpanel__ft{padding:18px clamp(24px,2vw,30px) clamp(22px,2vw,28px);border-top:1px solid var(--line)}
+.mpanel__ft .btn{width:100%;height:50px;font-size:14.5px}
+
+/* ── карта ── */
+.mcanvas{position:relative;min-height:640px;background:var(--bg-2);overflow:hidden}
+#yandexMap{position:absolute;inset:0;z-index:1;background:var(--bg-2)}
+#yandexMap [class*="ymaps3x0"][class*="copyright"]{font-size:9px;opacity:.5}
+
+.mtabs{position:absolute;top:18px;left:18px;right:18px;z-index:8;display:flex;gap:7px;flex-wrap:wrap}
+.mtab{height:38px;padding:0 17px;border-radius:var(--r-pill);background:rgba(255,255,255,.88);
+  font-size:13.5px;font-weight:500;color:var(--ink-2);-webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);box-shadow:0 2px 10px rgba(15,21,27,.08);transition:var(--t-fast) var(--e)}
+.mtab:hover{color:var(--ink)}
+.mtab.on{background:var(--ink);color:#fff}
+
+.mzoom{position:absolute;right:18px;bottom:18px;z-index:8;display:grid;background:#fff;
+  border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(15,21,27,.14)}
+.mzoom button{width:38px;height:38px;display:grid;place-items:center;font-size:17px;color:var(--ink-2);
+  transition:var(--t-fast) var(--e)}
+.mzoom button:hover{background:var(--bg-2);color:var(--ink)}
+.mzoom button+button{border-top:1px solid var(--line)}
+
+.lpin{width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid #fff;
+  box-shadow:0 1px 4px rgba(15,21,27,.3)}
+.lpin--main{width:56px;height:56px;border-radius:50%;background:var(--gold);display:grid;
+  place-items:center;font-size:12px;font-weight:700;color:#fff;letter-spacing:-.01em;
+  box-shadow:0 6px 20px rgba(205,162,75,.45);position:relative}
+.lpin--main::before{content:'';position:absolute;width:124px;height:124px;left:50%;top:50%;
+  transform:translate(-50%,-50%) scale(.85);border-radius:50%;background:rgba(205,162,75,.18);
+  animation:mpulse 3.2s var(--e) infinite}
+@keyframes mpulse{0%,100%{transform:translate(-50%,-50%) scale(.85);opacity:.9}
+  50%{transform:translate(-50%,-50%) scale(1.16);opacity:.25}}
+
+/* ═══════════════════════════════════════════════════════════
    АДАПТИВ
    ═══════════════════════════════════════════════════════════ */
 @media (max-width:1280px){
@@ -469,6 +534,7 @@ ul{margin:0;padding:0;list-style:none}
   .jkgrid{grid-template-columns:repeat(2,1fr)}
   .frow{grid-template-columns:minmax(0,auto) minmax(0,1fr) minmax(190px,260px) minmax(0,auto)}
   .fg--ready{display:none}
+  .mapbox{grid-template-columns:300px 1fr}
 }
 @media (max-width:860px){
   :root{--r-panel:26px}
@@ -478,6 +544,9 @@ ul{margin:0;padding:0;list-style:none}
   .shead{margin-bottom:22px;gap:14px}
   .shead h2{font-size:24px}
   .ofbento{grid-template-columns:1fr;gap:14px}
+  .mapbox{grid-template-columns:1fr;border-radius:24px}
+  .mpanel{border-right:0;border-bottom:1px solid var(--line);max-height:280px}
+  .mcanvas{min-height:380px}
   .of-hero{min-height:300px}
   .ofright__top{grid-template-columns:1fr 1fr;gap:14px}
   .ofc--sq{aspect-ratio:1/1}
@@ -792,6 +861,46 @@ ul{margin:0;padding:0;list-style:none}
   </div>
 </section>
 
+<!-- ═══ 04 · РАСПОЛОЖЕНИЕ И ИНФРАСТРУКТУРА ═══ -->
+<section class="sect" id="map">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2>Расположение и инфраструктура</h2>
+        <p>Проходимость формирует инфраструктура — включите категории и увидите, кто ходит мимо витрины каждый день</p>
+      </div>
+    </div>
+
+    <div class="mapbox">
+      <aside class="mpanel">
+        <div class="mpanel__hd">
+          <div class="h4" id="mapTitle">ЖК «Герои поколений»</div>
+          <div class="mpanel__addr">ул. Землячки, Дзержинский район</div>
+          <div class="mpanel__chip">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M7 1 8.4 4.9 12.5 5l-3.3 2.5L10.4 11 7 8.7 3.6 11l1.2-3.5L1.5 5l4.1-.1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            <span id="mapChip">42 объекта в радиусе 800 м</span>
+          </div>
+        </div>
+        <div class="mpanel__list" id="poiList"></div>
+        <div class="mpanel__ft"><button class="btn btn--gold">Проложить маршрут</button></div>
+      </aside>
+
+      <div class="mcanvas" id="mcanvas">
+        <div id="yandexMap"></div>
+        <div class="mtabs" id="mtabs">
+          <button class="mtab on">Герои поколений</button>
+          <button class="mtab">Берег Волги</button>
+          <button class="mtab">Новый</button>
+          <button class="mtab">Северный</button>
+          <button class="mtab">На Матросова</button>
+        </div>
+        <div class="mzoom"><button aria-label="Приблизить" id="mZoomIn">+</button><button aria-label="Отдалить" id="mZoomOut">−</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://api-maps.yandex.ru/v3/?apikey=1a570e5e-b0ac-47dd-8e55-e83bebab3666&lang=ru_RU"></script>
 <script>
 /* ═══════════════ ДАННЫЕ ═══════════════ */
 const JK=[
@@ -1095,6 +1204,126 @@ sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.closest('.sheet
 document.addEventListener('keydown',e=>{if(e.key==='Escape')openSheet(false)});
 
 $('#moreF').addEventListener('click',()=>location.hash='#catalog');
+
+/* ═══════════════ КАРТА И ИНФРАСТРУКТУРА ═══════════════ */
+const POI=[
+ {n:'Остановки транспорта',c:4,on:true},{n:'Продуктовые магазины',c:8,on:true},
+ {n:'Торговые центры',c:2,on:true},{n:'Школы',c:4,on:false},
+ {n:'Детские сады',c:5,on:false},{n:'Поликлиники',c:3,on:false},
+ {n:'Спортивные объекты',c:2,on:false},{n:'Парки и бульвары',c:2,on:false},
+ {n:'Кафе и рестораны',c:9,on:false},{n:'Банки и МФЦ',c:3,on:false}
+];
+const JK_MAP=[
+ {n:'Герои поколений',addr:'ул. Землячки, Дзержинский район',lat:48.7580,lng:44.4970},
+ {n:'Берег Волги',addr:'ул. Степана Разина, Ворошиловский район',lat:48.6810,lng:44.4920},
+ {n:'Новый',addr:'ул. Тракторостроителей, Тракторозаводский район',lat:48.8250,lng:44.6180},
+ {n:'Северный',addr:'Краснооктябрьский район',lat:48.7750,lng:44.5650},
+ {n:'На Матросова',addr:'ул. Матросова, Краснооктябрьский район',lat:48.7680,lng:44.5550}
+];
+(function(){
+  const list=$('#poiList');
+  const CH='<svg viewBox="0 0 12 12" fill="none"><path d="M2 6.2 4.6 9 10 3.2" stroke="currentColor" stroke-width="2"/></svg>';
+  list.innerHTML=POI.map((p,i)=>`<button class="poi ${p.on?'on':''}" data-i="${i}">
+    <span class="poi__b">${CH}</span><span class="poi__n">${p.n}</span><span class="poi__c">${p.c}</span></button>`).join('');
+
+  /* счётчик объектов, список и переключение ЖК — работают всегда,
+     независимо от того, загрузилась ли карта Яндекса */
+  function updateChip(){
+    const n=POI.filter(p=>p.on).reduce((s,p)=>s+p.c,0);
+    $('#mapChip').textContent=`${n} ${plural(n,['объект','объекта','объектов'])} в радиусе 800 м`;
+  }
+  updateChip();
+
+  let onPoiToggle=null; // подключит карта, если доступна
+  list.addEventListener('click',e=>{
+    const b=e.target.closest('[data-i]'); if(!b)return;
+    const on=b.classList.toggle('on');
+    const i=+b.dataset.i;
+    POI[i].on=on;
+    if(onPoiToggle) onPoiToggle(i,on);
+    updateChip();
+  });
+
+  let current=JK_MAP[0];
+  let onDistrictChange=null;
+  $('#mtabs').addEventListener('click',e=>{
+    const b=e.target.closest('.mtab'); if(!b)return;
+    [...document.querySelectorAll('.mtab')].forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const jk=JK_MAP.find(x=>x.n===b.textContent)||JK_MAP[0];
+    current=jk;
+    $('#mapTitle').textContent='ЖК «'+jk.n+'»';
+    $('.mpanel__addr').textContent=jk.addr;
+    if(onDistrictChange) onDistrictChange(jk);
+  });
+
+  $('.mpanel__ft .btn').addEventListener('click',()=>{
+    window.open(`https://yandex.ru/maps/?rtext=~${current.lat},${current.lng}&rtt=auto`,'_blank');
+  });
+
+  /* ── сама карта: подключается асинхронно, если Яндекс доступен ── */
+  (async function(){
+    if(typeof ymaps3==='undefined'){
+      document.getElementById('mZoomIn').style.display='none';
+      document.getElementById('mZoomOut').style.display='none';
+      return; // панель уже полностью рабочая и без карты
+    }
+    await ymaps3.ready;
+    const {YMap,YMapDefaultSchemeLayer,YMapDefaultFeaturesLayer,YMapMarker}=ymaps3;
+
+    const map=new YMap(document.getElementById('yandexMap'),{
+      location:{center:[JK_MAP[0].lng,JK_MAP[0].lat],zoom:15},
+      copyrightsPosition:'bottom left'
+    });
+    map.addChild(new YMapDefaultSchemeLayer());
+    map.addChild(new YMapDefaultFeaturesLayer());
+
+    const mainEl=document.createElement('div');
+    mainEl.className='lpin--main';
+    mainEl.textContent='ЖК';
+    let mainMarker=new YMapMarker({coordinates:[JK_MAP[0].lng,JK_MAP[0].lat]},mainEl);
+    map.addChild(mainMarker);
+
+    let poiMarkers=[];
+    let seed=11;
+    const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
+
+    function renderPOI(center){
+      poiMarkers.forEach(pm=>map.removeChild(pm.marker));
+      poiMarkers=[];
+      POI.forEach((p,i)=>{
+        for(let k=0;k<p.c;k++){
+          const dLat=(rnd()-0.5)*0.024, dLng=(rnd()-0.5)*0.034;
+          const el=document.createElement('div');
+          el.className='lpin';
+          const marker=new YMapMarker({coordinates:[center.lng+dLng,center.lat+dLat]},el);
+          if(p.on) map.addChild(marker);
+          poiMarkers.push({cat:i,marker,on:p.on});
+        }
+      });
+    }
+    renderPOI(JK_MAP[0]);
+
+    onPoiToggle=(i,on)=>{
+      poiMarkers.filter(pm=>pm.cat===i).forEach(pm=>{
+        if(on&&!pm.on) map.addChild(pm.marker);
+        if(!on&&pm.on) map.removeChild(pm.marker);
+        pm.on=on;
+      });
+    };
+
+    onDistrictChange=(jk)=>{
+      map.setLocation({center:[jk.lng,jk.lat],zoom:15,duration:600});
+      map.removeChild(mainMarker);
+      mainMarker=new YMapMarker({coordinates:[jk.lng,jk.lat]},mainEl);
+      map.addChild(mainMarker);
+      renderPOI(jk);
+    };
+
+    $('#mZoomIn').addEventListener('click',()=>map.setLocation({zoom:map.zoom+1,duration:200}));
+    $('#mZoomOut').addEventListener('click',()=>map.setLocation({zoom:map.zoom-1,duration:200}));
+  })();
+})();
 </script>
 </body>
 </html>

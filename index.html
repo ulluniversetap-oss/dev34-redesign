@@ -385,54 +385,52 @@ ul{margin:0;padding:0;list-style:none}
 .sect--white{background:var(--bg)}
 :root{--r-bento:32px}
 
-.ofbento{display:grid;grid-template-columns:1fr 1.1fr;gap:22px;align-items:stretch}
-.ofright{display:grid;grid-template-rows:auto auto;gap:22px}
-.ofright__top{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.ofgrid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,22px)}
 
 /* общая оболочка карточки */
 .ofc{position:relative;border-radius:var(--r-bento);overflow:hidden;isolation:isolate;
   transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
-.ofc:hover{transform:translateY(-4px)}
+.ofc:hover{transform:translateY(-5px)}
 
-/* ── хиро: фото + крупная цена ── */
-.of-hero{grid-row:1;min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:clamp(30px,2.6vw,42px);color:#fff}
-.of-hero:hover{box-shadow:0 30px 70px rgba(15,21,27,.35)}
-.of-hero__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;
+.ofc4{min-height:307px;padding:clamp(22px,1.8vw,28px);display:flex;flex-direction:column;
+  justify-content:space-between}
+.ofc4--soft{background:var(--bg-2)}
+.ofc4--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.1)}
+.ofc4--photo{color:#fff}
+.ofc4--photo:hover{box-shadow:0 30px 70px rgba(15,21,27,.35)}
+.ofc4__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;
   transform:scale(1.04);transition:transform 900ms var(--e)}
-.of-hero:hover .of-hero__bg{transform:scale(1.1)}
-.of-hero::after{content:'';position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(0deg, rgba(10,14,19,.92) 0%, rgba(10,14,19,.48) 44%, rgba(10,14,19,.04) 78%)}
-.of-hero__eyebrow{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
-  font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);
-  padding:7px 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.1);
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin-bottom:auto}
-.of-hero__price{font-size:clamp(32px,3vw,44px);font-weight:700;letter-spacing:-.034em;line-height:1}
-.of-hero__price b{color:var(--gold)}
-.of-hero__label{font-size:15.5px;color:rgba(255,255,255,.78);margin-top:9px}
-.of-hero__ft{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-top:20px}
-.of-hero__sub{font-size:13px;color:rgba(255,255,255,.54);max-width:24ch;line-height:1.4}
+.ofc4--photo:hover .ofc4__bg{transform:scale(1.1)}
+.ofc4--photo::after{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg, rgba(10,14,19,.92) 0%, rgba(10,14,19,.52) 50%, rgba(10,14,19,.58) 100%)}
 
-/* ── светлые карточки (две квадратные + широкая) ── */
-.ofc--soft{background:var(--bg-2);padding:clamp(24px,2vw,30px);
-  display:flex;flex-direction:column}
-.ofc--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.1)}
-.ofc--sq{aspect-ratio:1/.86;justify-content:space-between}
-.ofc--wide{flex-direction:row;align-items:flex-end;gap:24px;min-height:150px}
-.ofc--wide .ofc__bottom{flex:1;position:relative;z-index:1}
+.ofc4__top{display:flex;align-items:flex-start;padding-right:56px}
+.ofc4__badge{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);
+  padding:7px 13px;border-radius:var(--r-pill);background:rgba(255,255,255,.1);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ofc4__keys{position:absolute;left:0;bottom:0;width:62%;max-width:190px;z-index:1;
+  transform:translate(-10%,10%);transition:transform var(--t) var(--e);pointer-events:none}
+.ofc4--keyscard:hover .ofc4__keys{transform:translate(-10%,6%)}
+.ofc4__keys img{width:100%;height:auto;display:block}
 
-.ofc__arrow{position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;
-  flex:none;display:grid;place-items:center;transition:var(--t-fast) var(--e);
-  background:#fff;color:var(--ink);box-shadow:0 6px 16px rgba(15,21,27,.12);z-index:2}
+.ofc4__price{font-size:clamp(28px,2.4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1}
+.ofc4__price b{color:var(--gold);font-weight:700}
+.ofc4__sub{font-size:13px;line-height:1.45;color:rgba(255,255,255,.56);margin-top:9px}
+
+.ofc4 .ofc__label{font-size:13.5px;font-weight:500}
+.ofc4--photo .ofc__label{color:rgba(255,255,255,.8);margin-top:12px}
+.ofc4--soft .ofc__label{color:var(--ink-3)}
+.ofc4 .ofc__value{font-size:clamp(21px,1.8vw,25px);font-weight:700;letter-spacing:-.03em;
+  color:var(--ink);margin-top:6px;line-height:1.14}
+
+.ofc__arrow{position:absolute;bottom:clamp(20px,1.8vw,26px);right:clamp(20px,1.8vw,26px);
+  width:42px;height:42px;border-radius:50%;flex:none;z-index:3;
+  display:grid;place-items:center;transition:var(--t-fast) var(--e);
+  background:#fff;color:var(--ink)}
 .ofc__arrow svg{width:13px;transition:transform var(--t) var(--e)}
 .ofc:hover .ofc__arrow{background:var(--gold);color:#fff}
 .ofc:hover .ofc__arrow svg{transform:translate(2px,-2px)}
-.of-hero .ofc__arrow{background:rgba(255,255,255,.14);color:#fff;position:static;box-shadow:none}
-
-.ofc__label{font-size:13.5px;font-weight:500;color:var(--ink-3)}
-.ofc__value{font-size:clamp(22px,1.9vw,27px);font-weight:700;letter-spacing:-.03em;color:var(--ink);
-  line-height:1.12}
-.ofc--wide .ofc__value{margin-top:6px}
+.ofc4--photo .ofc__arrow{background:rgba(255,255,255,.14);color:#fff;box-shadow:none}
 
 /* ── визуальные наполнители карточек ── */
 .ofc__avatars{display:flex;align-items:center}
@@ -443,16 +441,11 @@ ul{margin:0;padding:0;list-style:none}
   display:grid;place-items:center;font-size:12px;font-weight:600;margin-left:-14px;
   border:3px solid var(--bg-2);box-shadow:0 2px 6px rgba(15,21,27,.1)}
 
-.ofc__tags{display:flex;flex-wrap:wrap;gap:7px;align-content:flex-end}
+.ofc__tags{display:flex;flex-wrap:wrap;gap:7px;align-content:flex-start}
 .ofc__tags span{display:inline-flex;align-items:center;height:30px;padding:0 13px;
   border-radius:var(--r-pill);background:#fff;color:var(--ink-2);
   font-size:12.5px;font-weight:500;white-space:nowrap;box-shadow:0 1px 0 rgba(15,21,27,.04)}
 .ofc__tags-more{background:var(--ink) !important;color:#fff !important;font-weight:600 !important}
-
-.ofc__wideimg{position:absolute;right:clamp(54px,7.5vw,92px);top:50%;width:clamp(190px,21vw,260px);z-index:0;
-  transform:translateY(-31%);transition:transform var(--t) var(--e);pointer-events:none}
-.ofc__wideimg img{width:100%;height:auto;display:block}
-.ofc:hover .ofc__wideimg{transform:translateY(-35%)}
 
 .ofnote{font-size:12.5px;color:var(--ink-3);margin-top:clamp(18px,2.2vw,26px)}
 
@@ -522,6 +515,36 @@ ul{margin:0;padding:0;list-style:none}
   50%{transform:translate(-50%,-50%) scale(1.16);opacity:.25}}
 
 /* ═══════════════════════════════════════════════════════════
+   05 · ПОЧЕМУ ВЫБИРАЮТ НАС
+   ═══════════════════════════════════════════════════════════ */
+.trustbento{display:grid;grid-template-columns:1fr 1.18fr;gap:22px;align-items:stretch}
+
+/* ── тёмная фото-карточка слева ── */
+.trust-hero{position:relative;grid-row:1;border-radius:var(--r-bento);overflow:hidden;
+  min-height:460px;display:flex;flex-direction:column;justify-content:space-between;
+  padding:clamp(30px,2.8vw,42px);color:#fff;isolation:isolate}
+.trust-hero__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.trust-hero::after{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg, rgba(10,14,19,.95) 18%, rgba(10,14,19,.72) 48%, rgba(10,14,19,.3) 100%)}
+.trust-hero h3{font-size:clamp(24px,2.1vw,30px);font-weight:700;letter-spacing:-.026em;line-height:1.16;max-width:16ch}
+.trust-hero p{font-size:15px;line-height:1.56;color:rgba(255,255,255,.72);margin-top:14px;max-width:32ch}
+.tstats{display:flex;gap:clamp(20px,2.4vw,34px);flex-wrap:wrap;margin-top:auto;padding-top:28px}
+.tstat b{display:block;font-size:clamp(24px,2vw,30px);font-weight:700;letter-spacing:-.03em;color:var(--gold);line-height:1}
+.tstat span{display:block;font-size:12.5px;line-height:1.32;color:rgba(255,255,255,.56);margin-top:7px;max-width:13ch}
+
+/* ── 2×2 сетка карточек-преимуществ ── */
+.trustgrid{grid-row:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:22px}
+.tc{background:var(--bg-2);border-radius:var(--r-bento);padding:clamp(24px,2vw,30px);
+  display:flex;flex-direction:column;transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
+.tc:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(15,21,27,.1)}
+.tc__i{width:46px;height:46px;border-radius:14px;background:var(--gold-tint);color:var(--gold-dp);
+  display:grid;place-items:center;flex:none}
+.tc__i svg{width:21px;height:21px}
+.tc h4{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-top:18px}
+.tc p{font-size:13.5px;line-height:1.5;color:var(--ink-3);margin-top:8px}
+.tc p a{color:var(--gold-dp);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+
+/* ═══════════════════════════════════════════════════════════
    АДАПТИВ
    ═══════════════════════════════════════════════════════════ */
 @media (max-width:1280px){
@@ -543,15 +566,16 @@ ul{margin:0;padding:0;list-style:none}
   .sect{padding:26px 0 40px}
   .shead{margin-bottom:22px;gap:14px}
   .shead h2{font-size:24px}
-  .ofbento{grid-template-columns:1fr;gap:14px}
   .mapbox{grid-template-columns:1fr;border-radius:24px}
   .mpanel{border-right:0;border-bottom:1px solid var(--line);max-height:280px}
   .mcanvas{min-height:380px}
-  .of-hero{min-height:300px}
-  .ofright__top{grid-template-columns:1fr 1fr;gap:14px}
-  .ofc--sq{aspect-ratio:1/1}
-  .ofc--wide{flex-direction:column;align-items:flex-start}
-  .ofc__arrow{top:16px;right:16px;width:36px;height:36px}
+  .trustbento{grid-template-columns:1fr;gap:14px}
+  .trust-hero,.trustgrid{grid-row:auto}
+  .trust-hero{min-height:280px}
+  .trustgrid{grid-template-columns:1fr 1fr;gap:14px}
+  .tc{padding:20px}
+  .ofgrid4{grid-template-columns:1fr 1fr;gap:14px}
+  .ofc4{min-height:192px;padding:20px}
   .seg button{height:38px;padding:0 16px;font-size:13.5px}
   .jkgrid{grid-template-columns:1fr;gap:16px}
 
@@ -601,6 +625,7 @@ ul{margin:0;padding:0;list-style:none}
   .logo{font-size:16px}
   .hdr__in{justify-content:space-between}
   .hdr__act{margin-left:auto}
+  .ofgrid4{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -802,59 +827,62 @@ ul{margin:0;padding:0;list-style:none}
       </div>
     </div>
 
-    <div class="ofbento">
-      <a href="#catalog" class="ofc of-hero">
-        <div class="of-hero__bg" style="background-image:url('assets/img/jk-noviy.jpg')"></div>
-        <span class="of-hero__eyebrow">Условие месяца</span>
-        <div class="of-hero__price">450 <b>₽ за м²</b></div>
-        <div class="of-hero__label">Первый месяц аренды</div>
-        <div class="of-hero__ft">
-          <div class="of-hero__sub">в ЖК «Новый» и ЖК «Герои поколений»</div>
-          <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="ofgrid4">
+      <a href="#catalog" class="ofc ofc4 ofc4--photo">
+        <div class="ofc4__bg" style="background-image:url('assets/img/jk-noviy.jpg')"></div>
+        <div class="ofc4__bottom">
+          <div class="ofc4__price">450 <b>₽ за м²</b></div>
+          <div class="ofc__label">Первый месяц аренды</div>
+          <div class="ofc4__sub">в ЖК «Новый» и ЖК «Герои поколений»</div>
         </div>
+        <div class="ofc4__top">
+          <span class="ofc4__badge">Условие месяца</span>
+        </div>
+        <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
-      <div class="ofright">
-        <div class="ofright__top">
-          <a href="#catalog" class="ofc ofc--soft ofc--sq">
-            <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="ofc__avatars">
-              <img src="assets/img/jk-geroi-1.jpg" alt="">
-              <img src="assets/img/jk-bereg-volgi.jpg" alt="">
-              <img src="assets/img/jk-semeyniy.jpg" alt="">
-              <span class="ofc__avatars-more">+5</span>
-            </div>
-            <div class="ofc__bottom">
-              <div class="ofc__label">Скидки на помещения</div>
-              <div class="ofc__value">до 5 000 000 ₽</div>
-            </div>
-          </a>
-          <a href="#catalog" class="ofc ofc--soft ofc--sq">
-            <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="ofc__bottom">
-              <div class="ofc__label">Коммерческие помещения</div>
-              <div class="ofc__value">от 3 999 000 ₽</div>
-            </div>
-            <div class="ofc__tags">
-              <span>Кофейни и пекарни</span>
-              <span>Пункты выдачи</span>
-              <span>Салоны красоты</span>
-              <span>Аптеки</span>
-              <span>Продуктовые</span>
-              <span class="ofc__tags-more">+3</span>
-            </div>
-          </a>
+      <a href="#catalog" class="ofc ofc4 ofc4--soft">
+        <div class="ofc4__bottom">
+          <div class="ofc__label">Скидки на помещения</div>
+          <div class="ofc__value">до 5 000 000 ₽</div>
         </div>
-
-        <a href="#catalog" class="ofc ofc--soft ofc--wide">
-          <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div class="ofc__bottom">
-            <div class="ofc__label">Покупка</div>
-            <div class="ofc__value">от 35 000 ₽ за м²</div>
+        <div class="ofc4__top">
+          <div class="ofc__avatars">
+            <img src="assets/img/jk-geroi-1.jpg" alt="">
+            <img src="assets/img/jk-bereg-volgi.jpg" alt="">
+            <img src="assets/img/jk-semeyniy.jpg" alt="">
+            <span class="ofc__avatars-more">+5</span>
           </div>
-          <div class="ofc__wideimg"><img src="assets/img/promo-keys.png" alt=""></div>
-        </a>
-      </div>
+        </div>
+        <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a href="#catalog" class="ofc ofc4 ofc4--soft">
+        <div class="ofc4__bottom">
+          <div class="ofc__label">Коммерческие помещения</div>
+          <div class="ofc__value">от 3 999 000 ₽</div>
+        </div>
+        <div class="ofc4__top">
+          <div class="ofc__tags">
+            <span>Кофейни и пекарни</span>
+            <span>Пункты выдачи</span>
+            <span>Салоны красоты</span>
+            <span>Аптеки</span>
+            <span>Продуктовые</span>
+            <span class="ofc__tags-more">+3</span>
+          </div>
+        </div>
+        <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a href="#catalog" class="ofc ofc4 ofc4--soft ofc4--keyscard">
+        <div class="ofc4__bottom">
+          <div class="ofc__label">Покупка</div>
+          <div class="ofc__value">от 35 000 ₽ за м²</div>
+        </div>
+        <div class="ofc4__keys"><img src="assets/img/promo-keys.png" alt=""></div>
+        <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
     </div>
 
     <p class="ofnote">Условия не являются публичной офертой · подробности у менеджера</p>
@@ -895,6 +923,55 @@ ul{margin:0;padding:0;list-style:none}
           <button class="mtab">На Матросова</button>
         </div>
         <div class="mzoom"><button aria-label="Приблизить" id="mZoomIn">+</button><button aria-label="Отдалить" id="mZoomOut">−</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 · ПОЧЕМУ ВЫБИРАЮТ НАС ═══ -->
+<section class="sect sect--white">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2>Почему выбирают нас</h2>
+      </div>
+    </div>
+
+    <div class="trustbento">
+      <div class="trust-hero">
+        <div class="trust-hero__bg" style="background-image:url('assets/img/jk-gvardeyskaya.jpg')"></div>
+        <div>
+          <h3>Знаем рынок Волгограда изнутри</h3>
+          <p>«А+ Бутик недвижимости» — эксклюзивный партнёр восьми застройщиков региона. Все коммерческие площади в наших ЖК проходят через нас.</p>
+        </div>
+        <div class="tstats">
+          <div class="tstat"><b>8</b><span>жилых комплексов</span></div>
+          <div class="tstat"><b>420+</b><span>сделок с коммерцией</span></div>
+          <div class="tstat"><b>0 ₽</b><span>комиссия покупателю</span></div>
+        </div>
+      </div>
+
+      <div class="trustgrid">
+        <div class="tc">
+          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5 4 6v6.3c0 5 3.5 9.4 8 10.5 4.5-1.1 8-5.5 8-10.5V6l-8-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.3 12 2.6 2.6 5-5.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Это безопасно</h4>
+          <p>Все сделки проходят по 214-ФЗ с защитой средств на эскроу-счетах. Декларации доступны <a href="#">на наш.дом.рф</a></p>
+        </div>
+        <div class="tc">
+          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5c-2.8 3.2-5.6 4.3-5.6 7.8a5.6 5.6 0 0 0 11.2 0c0-3.5-2.8-4.6-5.6-7.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h4>Это просто</h4>
+          <p>Готовые решения под любой бюджет: от 45 м² под ПВЗ до 420 м² для федерального арендатора. Документы — онлайн.</p>
+        </div>
+        <div class="tc">
+          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M18.5 5.5 5.5 18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <h4>Это выгодно</h4>
+          <p>Ипотека для бизнеса от партнёров, скидка при 100% оплате, рассрочка без переплат.</p>
+        </div>
+        <div class="tc">
+          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 18 10 11l4 4 6.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 8h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Это ликвидно</h4>
+          <p>Помещения на первой линии в районах с плотной застройкой. Средний срок поиска арендатора — полтора месяца.</p>
+        </div>
       </div>
     </div>
   </div>

@@ -379,6 +379,191 @@ ul{margin:0;padding:0;list-style:none}
 .jk__empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-3);font-size:15px}
 
 /* ═══════════════════════════════════════════════════════════
+   02b · ПОД КАКОЙ БИЗНЕС ПОДОЙДЁТ ПОМЕЩЕНИЕ
+   ═══════════════════════════════════════════════════════════ */
+.bizslider{position:relative;margin:-10px -26px -34px}
+.bizgrid{--bizgap:clamp(16px,1.6vw,22px);display:flex;gap:var(--bizgap);overflow-x:auto;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:10px 26px 34px}
+.bizgrid::-webkit-scrollbar{display:none}
+
+/* ── навигация слайдера: пара круглых кнопок рядом с заголовком блока ── */
+.bizn{display:flex;align-items:center;gap:10px;flex:none}
+.bizn button{width:46px;height:46px;border-radius:50%;flex:none;border:none;cursor:pointer;
+  background:#fff;color:var(--ink-2);box-shadow:0 1px 0 var(--line);display:grid;place-items:center;
+  transition:background var(--t-fast) var(--e), color var(--t-fast) var(--e), opacity var(--t-fast) var(--e), box-shadow var(--t-fast) var(--e)}
+.bizn button svg{width:14px;transition:transform var(--t) var(--e)}
+.bizn button:hover:not(:disabled){background:var(--gold);color:#fff}
+.bizn button:disabled{opacity:.35;cursor:default}
+
+.bizc{flex:0 0 calc((100% - 2*var(--bizgap)) / 3);scroll-snap-align:start;
+  background:#fff;border-radius:var(--r);padding:clamp(22px,1.9vw,28px) clamp(22px,1.9vw,26px) clamp(20px,1.7vw,24px);
+  box-shadow:0 1px 0 var(--line);transition:box-shadow var(--t) var(--e), transform var(--t) var(--e)}
+.bizc:hover{box-shadow:0 20px 44px rgba(15,21,27,.12);transform:translateY(-3px)}
+
+.bizc__hd{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.bizc__t{font-size:17.5px;font-weight:600;letter-spacing:-.022em;line-height:1.28}
+.bizc__n{flex:none}
+
+.bizc__specs{margin-top:18px;padding-top:4px;border-top:1px solid var(--line)}
+.bizc__row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.bizc__row:last-child{border-bottom:none}
+.bizc__row i{font-style:normal;color:var(--ink-3)}
+.bizc__row b{font-weight:600;color:var(--ink);text-align:right;white-space:nowrap}
+
+.bizc__ft{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}
+.bizc__link{font-size:14px;font-weight:500;color:var(--ink-2);transition:color var(--t-fast) var(--e)}
+.bizc:hover .bizc__link{color:var(--ink)}
+.bizc__arrow{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:var(--bg-2);color:var(--ink-3);transition:var(--t-fast) var(--e)}
+.bizc__arrow svg{width:13px;transition:transform var(--t) var(--e)}
+.bizc:hover .bizc__arrow{background:var(--gold);color:#fff}
+.bizc:hover .bizc__arrow svg{transform:translate(2px,-2px)}
+
+@media(max-width:900px){.bizc{flex-basis:calc((100% - 1*var(--bizgap)) / 2)}}
+@media(max-width:600px){.bizc{flex-basis:calc(100% - 36px)}}
+
+/* ═══════════════════════════════════════════════════════════
+   06 · ЧТО ПОЛУЧАЕТ ВАШ БИЗНЕС — асимметричный фото-бенто
+   ═══════════════════════════════════════════════════════════ */
+.perksgrid{display:grid;grid-template-columns:1fr 1fr 1.6fr;grid-template-rows:repeat(3,minmax(150px,1fr));
+  gap:clamp(14px,1.6vw,22px)}
+
+.prk{position:relative;border-radius:var(--r-bento);overflow:hidden;isolation:isolate;
+  padding:clamp(24px,2.2vw,34px);display:flex;flex-direction:column;justify-content:space-between;
+  transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
+.prk:hover{transform:translateY(-5px)}
+.prk--hero{grid-row:1/4;grid-column:1}
+.prk--hero2{grid-row:1/4;grid-column:2}
+
+.prk--soft{background:var(--bg-2)}
+.prk--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.1)}
+.prk--accent{background:linear-gradient(155deg, var(--gold) 0%, var(--gold-dp) 100%);color:#fff}
+.prk--accent:hover{box-shadow:0 20px 44px rgba(205,162,75,.32)}
+.prk--photo{color:#fff}
+.prk--photo:hover{box-shadow:0 20px 44px rgba(15,21,27,.22)}
+.prk__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;
+  transform:scale(1.04);transition:transform 900ms var(--e)}
+.prk--photo:hover .prk__bg{transform:scale(1.1)}
+.prk--photo::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(190deg, rgba(10,14,19,.1) 0%, rgba(10,14,19,.56) 72%, rgba(10,14,19,.74) 100%)}
+
+.prk h3{font-size:clamp(19px,1.7vw,24px);font-weight:700;letter-spacing:-.022em;line-height:1.18;max-width:16ch}
+.prk--hero h3{max-width:22ch}
+.prk--hero2 h3{max-width:20ch}
+.prk__ft{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:16px}
+.prk__ft p{font-size:13.5px;line-height:1.5;max-width:30ch}
+.prk--photo .prk__ft p,.prk--accent .prk__ft p{color:rgba(255,255,255,.72)}
+.prk--soft .prk__ft p{color:var(--ink-3)}
+.prk__arrow{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:#fff;color:var(--ink);transition:var(--t-fast) var(--e)}
+.prk__arrow svg{width:13px;transition:transform var(--t) var(--e)}
+.prk:hover .prk__arrow{background:var(--gold);color:#fff}
+.prk:hover .prk__arrow svg{transform:translate(2px,-2px)}
+.prk--photo .prk__arrow,.prk--accent .prk__arrow{background:rgba(255,255,255,.18);color:#fff}
+
+@media(max-width:860px){
+  .perksgrid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .prk--hero,.prk--hero2{grid-column:1/3;grid-row:auto;min-height:260px}
+}
+@media(max-width:600px){
+  .perksgrid{grid-template-columns:1fr}
+  .prk--hero,.prk--hero2{grid-column:1}
+  .prk{min-height:220px}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   07 · КАК ПРОХОДИТ СДЕЛКА — 4 шага с коннектором
+   ═══════════════════════════════════════════════════════════ */
+.dealgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,22px)}
+
+.dealc{position:relative;background:#fff;border-radius:var(--r-bento);
+  padding:clamp(24px,2vw,30px) clamp(22px,1.9vw,26px);box-shadow:0 1px 0 var(--line);
+  transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
+.dealc:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(15,21,27,.1)}
+
+.dealc__n{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:50%;background:var(--gold-tint);color:var(--gold-dp);font-size:14px;font-weight:700;
+  letter-spacing:-.01em;flex:none}
+.dealc h4{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-top:18px}
+.dealc p{font-size:13.5px;line-height:1.52;color:var(--ink-3);margin-top:8px}
+
+/* акцентный финальный шаг — передача помещения, смысловая точка сделки */
+.dealc--accent{background:linear-gradient(155deg, var(--gold) 0%, var(--gold-dp) 100%)}
+.dealc--accent:hover{box-shadow:0 20px 42px rgba(205,162,75,.32)}
+.dealc--accent .dealc__n{background:rgba(255,255,255,.2);color:#fff}
+.dealc--accent h4{color:#fff}
+.dealc--accent p{color:rgba(255,255,255,.82)}
+
+@media(max-width:860px){
+  .dealgrid{grid-template-columns:1fr 1fr;gap:14px}
+}
+@media(max-width:600px){
+  .dealgrid{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   08 · ЧАСТЫЕ ВОПРОСЫ — аккордеон, 2 колонки
+   ═══════════════════════════════════════════════════════════ */
+.btn--outline{background:#fff;color:var(--ink);border:1.5px solid var(--line-2)}
+.btn--outline:hover{background:var(--bg-2);border-color:var(--gold);transform:translateY(-1px)}
+
+.faqgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.4vw,16px);align-items:start}
+
+.faqi{background:var(--bg-2);border-radius:var(--r);transition:background var(--t) var(--e)}
+.faqi.on{background:var(--gold-tint)}
+
+.faqi__q{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;width:100%;
+  padding:clamp(18px,1.6vw,22px) clamp(20px,1.8vw,24px);background:none;border:none;cursor:pointer;
+  font:inherit;text-align:left;font-size:15.5px;font-weight:600;letter-spacing:-.012em;color:var(--ink)}
+
+.faqi__ic{position:relative;width:28px;height:28px;border-radius:50%;flex:none;background:#fff;
+  transition:background var(--t-fast) var(--e)}
+.faqi__ic::before,.faqi__ic::after{content:'';position:absolute;top:50%;left:50%;border-radius:2px;
+  background:var(--gold-dp);transition:transform var(--t) var(--e), background var(--t-fast) var(--e)}
+.faqi__ic::before{width:12px;height:1.6px;transform:translate(-50%,-50%)}
+.faqi__ic::after{width:1.6px;height:12px;transform:translate(-50%,-50%)}
+.faqi.on .faqi__ic{background:var(--gold)}
+.faqi.on .faqi__ic::before,.faqi.on .faqi__ic::after{background:#fff}
+.faqi.on .faqi__ic::after{transform:translate(-50%,-50%) scaleY(0)}
+
+.faqi__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows 420ms var(--e)}
+.faqi__a>div{overflow:hidden}
+.faqi.on .faqi__a{grid-template-rows:1fr}
+.faqi__a p{padding:0 clamp(20px,1.8vw,24px) clamp(18px,1.6vw,22px);font-size:14px;line-height:1.62;
+  color:var(--ink-3);max-width:46ch}
+
+@media(max-width:860px){
+  .faqgrid{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   10 · ФУТЕР
+   ═══════════════════════════════════════════════════════════ */
+.ftr{background:var(--night);color:rgba(255,255,255,.62);
+  padding:clamp(44px,5.6vw,72px) 0 clamp(24px,3vw,32px)}
+.ftr__top{display:grid;grid-template-columns:1.3fr .8fr .9fr 1fr;gap:clamp(24px,3vw,40px)}
+.ftr__brand .logo{color:#fff}
+.ftr__brand p{margin-top:16px;font-size:13.5px;line-height:1.65;max-width:34ch;color:rgba(255,255,255,.5)}
+.ftr h5{color:rgba(255,255,255,.4);font-size:11.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;margin-bottom:16px}
+.ftr__col{display:flex;flex-direction:column;gap:11px}
+.ftr__col a{font-size:14px;color:rgba(255,255,255,.68);transition:color var(--t-fast) var(--e)}
+.ftr__col a:hover{color:var(--gold)}
+.ftr__off{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.62)}
+.ftr__off strong{display:block;margin-top:14px;font-size:17px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.ftr__hr{height:1px;background:rgba(255,255,255,.1);margin:clamp(30px,4vw,44px) 0 20px}
+.ftr__bot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:12.5px;color:rgba(255,255,255,.38)}
+
+@media(max-width:900px){
+  .ftr__top{grid-template-columns:1fr 1fr;row-gap:32px}
+}
+@media(max-width:560px){
+  .ftr__top{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════════════════════
    03 · УСЛОВИЯ МЕСЯЦА — крупный bento: фото-хиро слева,
    две квадратные + одна широкая карточка справа
    ═══════════════════════════════════════════════════════════ */
@@ -397,20 +582,26 @@ ul{margin:0;padding:0;list-style:none}
 .ofc4--soft{background:var(--bg-2)}
 .ofc4--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.1)}
 .ofc4--photo{color:#fff}
-.ofc4--photo:hover{box-shadow:0 30px 70px rgba(15,21,27,.35)}
+.ofc4--photo:hover{box-shadow:0 20px 44px rgba(15,21,27,.22)}
 .ofc4__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;
   transform:scale(1.04);transition:transform 900ms var(--e)}
 .ofc4--photo:hover .ofc4__bg{transform:scale(1.1)}
-.ofc4--photo::after{content:'';position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg, rgba(10,14,19,.92) 0%, rgba(10,14,19,.52) 50%, rgba(10,14,19,.58) 100%)}
+.ofc4--photo::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:rgba(10,14,19,.62)}
 
 .ofc4__top{display:flex;align-items:flex-start;padding-right:56px}
-.ofc4__badge{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);
-  padding:7px 13px;border-radius:var(--r-pill);background:rgba(255,255,255,.1);
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.ofc4__keys{position:absolute;left:0;bottom:0;width:62%;max-width:190px;z-index:1;
-  transform:translate(-10%,10%);transition:transform var(--t) var(--e);pointer-events:none}
-.ofc4--keyscard:hover .ofc4__keys{transform:translate(-10%,6%)}
+
+/* ── карточка-условие: шапка с ценой сверху, пилюля-бейдж + стрелка снизу ── */
+.ofc4__foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
+.ofc4__foot .ofc__arrow{position:static}
+.ofc4__badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;
+  letter-spacing:.015em;color:var(--gold);padding:9px 15px 9px 12px;border-radius:var(--r-pill);
+  background:rgba(205,162,75,.16);border:1px solid rgba(205,162,75,.3);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);white-space:nowrap}
+.ofc4__badge svg{width:13px;height:13px;flex:none}
+.ofc4__keys{position:absolute;left:0;bottom:0;width:91.4%;max-width:281px;z-index:1;
+  transform:translate(-10%,27%);transition:transform var(--t) var(--e);pointer-events:none}
+.ofc4--keyscard:hover .ofc4__keys{transform:translate(-10%,23%)}
 .ofc4__keys img{width:100%;height:auto;display:block}
 
 .ofc4__price{font-size:clamp(28px,2.4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1}
@@ -517,32 +708,55 @@ ul{margin:0;padding:0;list-style:none}
 /* ═══════════════════════════════════════════════════════════
    05 · ПОЧЕМУ ВЫБИРАЮТ НАС
    ═══════════════════════════════════════════════════════════ */
-.trustbento{display:grid;grid-template-columns:1fr 1.18fr;gap:22px;align-items:stretch}
 
-/* ── тёмная фото-карточка слева ── */
-.trust-hero{position:relative;grid-row:1;border-radius:var(--r-bento);overflow:hidden;
-  min-height:460px;display:flex;flex-direction:column;justify-content:space-between;
-  padding:clamp(30px,2.8vw,42px);color:#fff;isolation:isolate}
-.trust-hero__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
-.trust-hero::after{content:'';position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(100deg, rgba(10,14,19,.95) 18%, rgba(10,14,19,.72) 48%, rgba(10,14,19,.3) 100%)}
-.trust-hero h3{font-size:clamp(24px,2.1vw,30px);font-weight:700;letter-spacing:-.026em;line-height:1.16;max-width:16ch}
-.trust-hero p{font-size:15px;line-height:1.56;color:rgba(255,255,255,.72);margin-top:14px;max-width:32ch}
-.tstats{display:flex;gap:clamp(20px,2.4vw,34px);flex-wrap:wrap;margin-top:auto;padding-top:28px}
-.tstat b{display:block;font-size:clamp(24px,2vw,30px);font-weight:700;letter-spacing:-.03em;color:var(--gold);line-height:1}
-.tstat span{display:block;font-size:12.5px;line-height:1.32;color:rgba(255,255,255,.56);margin-top:7px;max-width:13ch}
+/* ── асимметричное бенто: фото-карточка + 4 карточки преимуществ ── */
+.trustbento2{display:grid;grid-template-columns:1fr 1fr 1fr;grid-auto-rows:1fr;gap:22px}
 
-/* ── 2×2 сетка карточек-преимуществ ── */
-.trustgrid{grid-row:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:22px}
-.tc{background:var(--bg-2);border-radius:var(--r-bento);padding:clamp(24px,2vw,30px);
-  display:flex;flex-direction:column;transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
-.tc:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(15,21,27,.1)}
-.tc__i{width:46px;height:46px;border-radius:14px;background:var(--gold-tint);color:var(--gold-dp);
-  display:grid;place-items:center;flex:none}
-.tc__i svg{width:21px;height:21px}
-.tc h4{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-top:18px}
-.tc p{font-size:13.5px;line-height:1.5;color:var(--ink-3);margin-top:8px}
+.tp{position:relative;grid-row:1/3;grid-column:1;border-radius:var(--r-bento);overflow:hidden;
+  min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(28px,2.4vw,38px);color:#fff;isolation:isolate}
+.tp__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;
+  transition:transform calc(var(--t) * 2.4) var(--e)}
+.tp:hover .tp__bg{transform:scale(1.045)}
+.tp::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 90% 6%, rgba(205,162,75,.38), transparent 62%)}
+.tp::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(190deg, rgba(10,14,19,.1) 0%, rgba(10,14,19,.86) 68%, rgba(10,14,19,.97) 100%)}
+.tp__badge{position:absolute;top:clamp(22px,2vw,30px);left:clamp(22px,2vw,30px);right:clamp(22px,2vw,30px);
+  display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.015em;
+  color:var(--gold);padding:6px 11px 6px 9px;border-radius:var(--r-pill);width:fit-content;max-width:100%;
+  box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  background:rgba(205,162,75,.16);border:1px solid rgba(205,162,75,.3);backdrop-filter:blur(6px)}
+.tp__badge svg{width:12px;height:12px;flex:none}
+.tp h3{font-size:clamp(22px,1.9vw,27px);font-weight:700;letter-spacing:-.024em;line-height:1.18;max-width:15ch}
+.tp p{font-size:14px;line-height:1.56;color:rgba(255,255,255,.68);margin-top:12px;max-width:34ch}
+.tp__link{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;font-weight:600;color:#fff}
+.tp__link span{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.12);
+  display:grid;place-items:center;flex:none;transition:background var(--t-fast) var(--e), transform var(--t) var(--e)}
+.tp__link span svg{width:12px;transition:transform var(--t) var(--e)}
+.tp:hover .tp__link span{background:var(--gold)}
+.tp:hover .tp__link span svg{transform:translate(2px,-2px)}
+
+.tc{position:relative;overflow:hidden;background:var(--bg-2);border-radius:var(--r-bento);
+  padding:clamp(22px,1.9vw,27px);display:flex;flex-direction:column;
+  transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
+.tc:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(15,21,27,.1)}
+.tc__i{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--gold-dp);
+  display:grid;place-items:center;flex:none;box-shadow:0 1px 0 var(--line);
+  transition:background var(--t-fast) var(--e), color var(--t-fast) var(--e), transform var(--t) var(--e)}
+.tc:hover .tc__i{transform:scale(1.08)}
+.tc__i svg{width:19px;height:19px}
+.tc h4{font-size:16.5px;font-weight:700;letter-spacing:-.02em;margin-top:16px}
+.tc p{font-size:13.5px;line-height:1.5;color:var(--ink-3);margin-top:7px}
 .tc p a{color:var(--gold-dp);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+
+/* ── одна акцентная карточка в золотой заливке — визуальный ритм сетки ── */
+.tc--accent{background:linear-gradient(155deg, var(--gold) 0%, var(--gold-dp) 100%);color:#fff}
+.tc--accent:hover{box-shadow:0 20px 42px rgba(205,162,75,.32)}
+.tc--accent .tc__i{background:rgba(255,255,255,.2);color:#fff;box-shadow:none}
+.tc--accent h4{color:#fff}
+.tc--accent p{color:rgba(255,255,255,.82)}
+.tc--accent p a{color:#fff}
 
 /* ═══════════════════════════════════════════════════════════
    АДАПТИВ
@@ -569,11 +783,9 @@ ul{margin:0;padding:0;list-style:none}
   .mapbox{grid-template-columns:1fr;border-radius:24px}
   .mpanel{border-right:0;border-bottom:1px solid var(--line);max-height:280px}
   .mcanvas{min-height:380px}
-  .trustbento{grid-template-columns:1fr;gap:14px}
-  .trust-hero,.trustgrid{grid-row:auto}
-  .trust-hero{min-height:280px}
-  .trustgrid{grid-template-columns:1fr 1fr;gap:14px}
-  .tc{padding:20px}
+  .trustbento2{grid-template-columns:1fr 1fr;gap:14px}
+  .tp{grid-column:1/3;grid-row:auto;min-height:260px}
+  .tc{grid-column:span 1;padding:20px}
   .ofgrid4{grid-template-columns:1fr 1fr;gap:14px}
   .ofc4{min-height:192px;padding:20px}
   .seg button{height:38px;padding:0 16px;font-size:13.5px}
@@ -830,15 +1042,15 @@ ul{margin:0;padding:0;list-style:none}
     <div class="ofgrid4">
       <a href="#catalog" class="ofc ofc4 ofc4--photo">
         <div class="ofc4__bg" style="background-image:url('assets/img/jk-noviy.jpg')"></div>
-        <div class="ofc4__bottom">
+        <div class="ofc4__head">
           <div class="ofc4__price">450 <b>₽ за м²</b></div>
           <div class="ofc__label">Первый месяц аренды</div>
           <div class="ofc4__sub">в ЖК «Новый» и ЖК «Герои поколений»</div>
         </div>
-        <div class="ofc4__top">
-          <span class="ofc4__badge">Условие месяца</span>
+        <div class="ofc4__foot">
+          <span class="ofc4__badge"><svg viewBox="0 0 16 16" fill="none"><path d="M5.5 10.5 10.5 5.5M6.2 6.7a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8ZM9.8 11.1a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Условие месяца</span>
+          <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
-        <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a href="#catalog" class="ofc ofc4 ofc4--soft">
@@ -848,7 +1060,7 @@ ul{margin:0;padding:0;list-style:none}
         </div>
         <div class="ofc4__top">
           <div class="ofc__avatars">
-            <img src="assets/img/jk-geroi-1.jpg" alt="">
+            <img src="assets/img/jk-geroi-1.webp" alt="">
             <img src="assets/img/jk-bereg-volgi.jpg" alt="">
             <img src="assets/img/jk-semeyniy.jpg" alt="">
             <span class="ofc__avatars-more">+5</span>
@@ -934,55 +1146,325 @@ ul{margin:0;padding:0;list-style:none}
     <div class="shead">
       <div>
         <h2>Почему выбирают нас</h2>
+        <p>Не посредник, а эксклюзивный канал продаж коммерции<br>в жилых комплексах Волгограда.</p>
       </div>
     </div>
 
-    <div class="trustbento">
-      <div class="trust-hero">
-        <div class="trust-hero__bg" style="background-image:url('assets/img/jk-gvardeyskaya.jpg')"></div>
-        <div>
-          <h3>Знаем рынок Волгограда изнутри</h3>
-          <p>«А+ Бутик недвижимости» — эксклюзивный партнёр восьми застройщиков региона. Все коммерческие площади в наших ЖК проходят через нас.</p>
+    <div class="trustbento2">
+      <div class="tp">
+        <div class="tp__bg" style="background-image:url('assets/img/jk-gvardeyskaya.jpg')"></div>
+        <span class="tp__badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5 14 4v4.3c0 3.8-2.6 6.9-6 7.7-3.4-.8-6-3.9-6-7.7V4l6-2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Эксклюзивный партнёр</span>
+        <h3>Знаем рынок Волгограда изнутри</h3>
+        <p>«А+ Бутик недвижимости» — эксклюзивный<br>партнёр восьми застройщиков региона.<br>Все коммерческие площади в наших<br>ЖК проходят через нас.</p>
+        <a href="#catalog" class="tp__link">Смотреть каталог помещений<span><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+
+      <div class="tc tc--accent">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M18.5 5.5 5.5 18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h4>Это выгодно</h4>
+        <p>Ипотека для бизнеса от партнёров,<br>скидка при 100% оплате, рассрочка без переплат.</p>
+      </div>
+      <div class="tc">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5 4 6v6.3c0 5 3.5 9.4 8 10.5 4.5-1.1 8-5.5 8-10.5V6l-8-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.3 12 2.6 2.6 5-5.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Это безопасно</h4>
+        <p>Все сделки проходят по 214-ФЗ с защитой средств на эскроу-счетах. Декларации доступны <a href="#">на наш.дом.рф</a></p>
+      </div>
+      <div class="tc">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5c-2.8 3.2-5.6 4.3-5.6 7.8a5.6 5.6 0 0 0 11.2 0c0-3.5-2.8-4.6-5.6-7.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h4>Это просто</h4>
+        <p>Готовые решения под любой бюджет: от 45 м² под ПВЗ до 420 м² для федерального арендатора. Документы — онлайн.</p>
+      </div>
+      <div class="tc">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 18 10 11l4 4 6.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 8h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Это ликвидно</h4>
+        <p>Помещения на первой линии в районах с плотной застройкой. Средний срок поиска арендатора — полтора месяца.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02b · ПОД КАКОЙ БИЗНЕС ПОДОЙДЁТ ПОМЕЩЕНИЕ ═══ -->
+<section class="sect" id="biz">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2>Под какой бизнес<br>подойдёт помещение</h2>
+        <p>Технические требования у каждого формата свои.<br>Выберите свой — покажем только подходящие площади.</p>
+      </div>
+      <div class="bizn">
+        <button type="button" id="bizPrev" aria-label="Предыдущие"><svg viewBox="0 0 14 14" fill="none"><path d="M9 2 3 7l6 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" id="bizNext" aria-label="Следующие"><svg viewBox="0 0 14 14" fill="none"><path d="M5 2l6 5-6 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <div class="bizslider">
+    <div class="bizgrid" id="bizTrack">
+      <a href="#catalog" class="bizc">
+        <div class="bizc__hd">
+          <div class="bizc__t">Кофейня и пекарня</div>
+          <span class="chip chip--line bizc__n">14 лотов</span>
         </div>
-        <div class="tstats">
-          <div class="tstat"><b>8</b><span>жилых комплексов</span></div>
-          <div class="tstat"><b>420+</b><span>сделок с коммерцией</span></div>
-          <div class="tstat"><b>0 ₽</b><span>комиссия покупателю</span></div>
+        <div class="bizc__specs">
+          <div class="bizc__row"><i>Площадь</i><b>45 — 90 м²</b></div>
+          <div class="bizc__row"><i>Мощность</i><b>от 30 кВт</b></div>
+          <div class="bizc__row"><i>Мокрая точка</i><b>да</b></div>
+          <div class="bizc__row"><i>Вытяжка</i><b>да</b></div>
+          <div class="bizc__row"><i>Витраж</i><b>обязателен</b></div>
+        </div>
+        <div class="bizc__ft">
+          <span class="bizc__link">Показать помещения</span>
+          <span class="bizc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#catalog" class="bizc">
+        <div class="bizc__hd">
+          <div class="bizc__t">Пункт выдачи</div>
+          <span class="chip chip--line bizc__n">22 лота</span>
+        </div>
+        <div class="bizc__specs">
+          <div class="bizc__row"><i>Площадь</i><b>45 — 80 м²</b></div>
+          <div class="bizc__row"><i>Мощность</i><b>от 10 кВт</b></div>
+          <div class="bizc__row"><i>Отдельный вход</i><b>да</b></div>
+          <div class="bizc__row"><i>Разгрузка</i><b>желательна</b></div>
+          <div class="bizc__row"><i>Витраж</i><b>не важен</b></div>
+        </div>
+        <div class="bizc__ft">
+          <span class="bizc__link">Показать помещения</span>
+          <span class="bizc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#catalog" class="bizc">
+        <div class="bizc__hd">
+          <div class="bizc__t">Салон красоты</div>
+          <span class="chip chip--line bizc__n">11 лотов</span>
+        </div>
+        <div class="bizc__specs">
+          <div class="bizc__row"><i>Площадь</i><b>60 — 120 м²</b></div>
+          <div class="bizc__row"><i>Мощность</i><b>от 25 кВт</b></div>
+          <div class="bizc__row"><i>Мокрая точка</i><b>да</b></div>
+          <div class="bizc__row"><i>Санузел</i><b>2 шт.</b></div>
+          <div class="bizc__row"><i>Витраж</i><b>обязателен</b></div>
+        </div>
+        <div class="bizc__ft">
+          <span class="bizc__link">Показать помещения</span>
+          <span class="bizc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#catalog" class="bizc">
+        <div class="bizc__hd">
+          <div class="bizc__t">Аптека</div>
+          <span class="chip chip--line bizc__n">9 лотов</span>
+        </div>
+        <div class="bizc__specs">
+          <div class="bizc__row"><i>Площадь</i><b>50 — 100 м²</b></div>
+          <div class="bizc__row"><i>Мощность</i><b>от 15 кВт</b></div>
+          <div class="bizc__row"><i>Первая линия</i><b>обязательна</b></div>
+          <div class="bizc__row"><i>Санузел</i><b>да</b></div>
+          <div class="bizc__row"><i>Витраж</i><b>обязателен</b></div>
+        </div>
+        <div class="bizc__ft">
+          <span class="bizc__link">Показать помещения</span>
+          <span class="bizc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#catalog" class="bizc">
+        <div class="bizc__hd">
+          <div class="bizc__t">Медцентр и<br>стоматология</div>
+          <span class="chip chip--line bizc__n">7 лотов</span>
+        </div>
+        <div class="bizc__specs">
+          <div class="bizc__row"><i>Площадь</i><b>90 — 200 м²</b></div>
+          <div class="bizc__row"><i>Мощность</i><b>от 40 кВт</b></div>
+          <div class="bizc__row"><i>Потолки</i><b>от 3,2 м</b></div>
+          <div class="bizc__row"><i>Вентиляция</i><b>приточная</b></div>
+          <div class="bizc__row"><i>Санузел</i><b>2 шт.</b></div>
+        </div>
+        <div class="bizc__ft">
+          <span class="bizc__link">Показать помещения</span>
+          <span class="bizc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#catalog" class="bizc">
+        <div class="bizc__hd">
+          <div class="bizc__t">Продуктовый<br>магазин</div>
+          <span class="chip chip--line bizc__n">6 лотов</span>
+        </div>
+        <div class="bizc__specs">
+          <div class="bizc__row"><i>Площадь</i><b>150 — 420 м²</b></div>
+          <div class="bizc__row"><i>Мощность</i><b>от 60 кВт</b></div>
+          <div class="bizc__row"><i>Разгрузка</i><b>обязательна</b></div>
+          <div class="bizc__row"><i>Потолки</i><b>от 3,5 м</b></div>
+          <div class="bizc__row"><i>Парковка</i><b>от 15 мест</b></div>
+        </div>
+        <div class="bizc__ft">
+          <span class="bizc__link">Показать помещения</span>
+          <span class="bizc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 · ЧТО ПОЛУЧАЕТ ВАШ БИЗНЕС ═══ -->
+<section class="sect sect--white" id="perks">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2>Что получает ваш бизнес</h2>
+        <p>Расположение, безопасность и планировка — продуманы ещё на этапе проектирования ЖК.</p>
+      </div>
+    </div>
+
+    <div class="perksgrid">
+      <div class="prk prk--hero prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-traffic.jpg')"></div>
+        <h3>Локации с большим<br>трафиком</h3>
+        <div class="prk__ft">
+          <p>Постоянный поток жителей района<br>и оживлённые прогулочные зоны</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
 
-      <div class="trustgrid">
-        <div class="tc">
-          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5 4 6v6.3c0 5 3.5 9.4 8 10.5 4.5-1.1 8-5.5 8-10.5V6l-8-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.3 12 2.6 2.6 5-5.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h4>Это безопасно</h4>
-          <p>Все сделки проходят по 214-ФЗ с защитой средств на эскроу-счетах. Декларации доступны <a href="#">на наш.дом.рф</a></p>
+      <div class="prk prk--hero2 prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-schools.jpg')"></div>
+        <h3>Муниципальные школы<br>и детские сады</h3>
+        <div class="prk__ft">
+          <p>Ежедневный гарантированный поток родителей рядом с вашей точкой</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
-        <div class="tc">
-          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5c-2.8 3.2-5.6 4.3-5.6 7.8a5.6 5.6 0 0 0 11.2 0c0-3.5-2.8-4.6-5.6-7.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-          <h4>Это просто</h4>
-          <p>Готовые решения под любой бюджет: от 45 м² под ПВЗ до 420 м² для федерального арендатора. Документы — онлайн.</p>
+      </div>
+
+      <div class="prk prk--soft">
+        <h3>Система пожарной<br>сигнализации</h3>
+        <div class="prk__ft">
+          <p>Распознаёт возгорание на ранней стадии по дыму, теплу и пламени</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
-        <div class="tc">
-          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M18.5 5.5 5.5 18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <h4>Это выгодно</h4>
-          <p>Ипотека для бизнеса от партнёров, скидка при 100% оплате, рассрочка без переплат.</p>
+      </div>
+
+      <div class="prk prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-security.jpg')"></div>
+        <h3>Охраняемая<br>территория</h3>
+        <div class="prk__ft">
+          <p>Круглосуточная охрана территории<br>с системой видеонаблюдения</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
-        <div class="tc">
-          <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 18 10 11l4 4 6.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 8h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h4>Это ликвидно</h4>
-          <p>Помещения на первой линии в районах с плотной застройкой. Средний срок поиска арендатора — полтора месяца.</p>
+      </div>
+
+      <div class="prk prk--accent">
+        <h3>Разнообразие<br>планировок</h3>
+        <div class="prk__ft">
+          <p>Подберём или разработаем планировку под любые задачи вашего бизнеса</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ 07 · КАК ПРОХОДИТ СДЕЛКА ═══ -->
+<section class="sect" id="deal">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2>Как проходит сделка</h2>
+        <p>От первого звонка до передачи ключей — сопровождаем на каждом шаге.</p>
+      </div>
+      <a href="#contacts" class="btn btn--white">Задать вопрос менеджеру</a>
+    </div>
+
+    <div class="dealgrid">
+      <div class="dealc">
+        <span class="dealc__n">01</span>
+        <h4>Подбор</h4>
+        <p>Обсуждаем формат бизнеса, бюджет<br>и требования. Присылаем 3–5 вариантов<br>с расчётом окупаемости.</p>
+      </div>
+      <div class="dealc">
+        <span class="dealc__n">02</span>
+        <h4>Просмотр</h4>
+        <p>Выезд на объект с менеджером. Проверяем мощность, точку ввода, высоту потолка, зону разгрузки.</p>
+      </div>
+      <div class="dealc">
+        <span class="dealc__n">03</span>
+        <h4>Бронь и договор</h4>
+        <p>Фиксируем цену на 14 дней.<br>ДДУ по 214-ФЗ, расчёт<br>через эскроу-счёт.</p>
+      </div>
+      <div class="dealc dealc--accent">
+        <span class="dealc__n">04</span>
+        <h4>Передача</h4>
+        <p>Приёмка помещения, регистрация<br>права, подключение коммуникаций.<br>Помогаем найти арендатора.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 08 · ЧАСТЫЕ ВОПРОСЫ ═══ -->
+<section class="sect sect--white" id="faq">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2>Частые вопросы</h2>
+      </div>
+    </div>
+
+    <div class="faqgrid" id="faqGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ ФУТЕР ═══ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <a href="/" class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 245 245" height="34" width="34"><path fill="#CDA24B" d="M245 122.5c0 67.655-54.845 122.5-122.5 122.5S0 190.155 0 122.5 54.845 0 122.5 0 245 54.845 245 122.5Z"></path><path fill="#fff" d="M189.967 157.026h.007v.013L201 176h-5.117l-8.475-14.574h-15.602L180.28 176h-60.651v-4.4h28.078l-5.917-10.174H77.563L69.088 176h-5.116l8.474-14.574H57.591L49.117 176H44l53.133-91.374 15.007-25.808 12.544 21.573 44.563 76.635h15.603L119.941 45.4l2.558-4.4 67.468 116.026Zm-129.818 0h14.855l32.114-55.227-7.427-12.773-39.542 68Zm19.972 0h59.111l-29.555-50.827-29.556 50.827Z"></path></svg>
+          <span><b>developer34</b><i>коммерция</i></span>
+        </a>
+        <p>Коммерческая недвижимость в новостройках Волгограда. Эксклюзивный партнёр восьми застройщиков региона.</p>
+      </div>
+      <div class="ftr__col">
+        <h5>Разделы</h5>
+        <a href="#catalog">Помещения</a>
+        <a href="#offers">Условия</a>
+        <a href="#map">Расположение</a>
+        <a href="#deal">Сделка</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div class="ftr__col">
+        <h5>Информация</h5>
+        <a href="#">О компании</a>
+        <a href="#">Документы</a>
+        <a href="#">Способы оплаты</a>
+        <a href="#">Политика обработки данных</a>
+      </div>
+      <div class="ftr__off">
+        <h5>Офисы продаж</h5>
+        ул. Советская, 28<br>
+        ул. Степана Разина, 6 — ЖК «Берег Волги»<br>
+        ул. Историческая, 178 — ЖК «Герои Поколений»
+        <strong>+7 (8442) 24-48-11</strong>
+      </div>
+    </div>
+    <div class="ftr__hr"></div>
+    <div class="ftr__bot">
+      <span>© 2026 developer34. Все права защищены.</span>
+      <span>Информация на сайте не является публичной офертой.</span>
+    </div>
+  </div>
+</footer>
+
 <script src="https://api-maps.yandex.ru/v3/?apikey=1a570e5e-b0ac-47dd-8e55-e83bebab3666&lang=ru_RU"></script>
 <script>
 /* ═══════════════ ДАННЫЕ ═══════════════ */
 const JK=[
- {n:'Герои поколений',url:'zhk/geroi-pokoleniy-1.html',o:'I', r:'Дзержинский',      st:'Сдан',     c:12,cr:5, a:[52,214],p:3.9,pr:950, ph:'assets/img/jk-geroi-1.jpg'},
- {n:'Герои поколений',url:'',                          o:'II',r:'Дзержинский',      st:'Строится', c:18,cr:0, a:[45,168],p:3.2,pr:0,   ph:'assets/img/jk-geroi-2.jpg'},
+ {n:'Герои поколений',url:'zhk/geroi-pokoleniy-1.html',o:'I', r:'Дзержинский',      st:'Сдан',     c:12,cr:5, a:[52,214],p:3.9,pr:950, ph:'assets/img/jk-geroi-1.webp'},
+ {n:'Герои поколений',url:'',                          o:'II',r:'Дзержинский',      st:'Строится', c:18,cr:0, a:[45,168],p:3.2,pr:0,   ph:'assets/img/jk-geroi-2.webp'},
  {n:'Берег Волги',    url:'zhk/bereg-volgi-1.html',    o:'',  r:'Ворошиловский',    st:'Сдан',     c:9, cr:0, a:[68,420],p:6.4,pr:0,   ph:'assets/img/jk-bereg-volgi.jpg'},
  {n:'На Матросова',   url:'',                          o:'',  r:'Краснооктябрьский',st:'Сдан',     c:6, cr:4, a:[54,132],p:5.1,pr:1250,ph:'assets/img/jk-matrosova.jpg'},
  {n:'Новый',          url:'zhk/tzr-new-1.html',        o:'',  r:'Тракторозаводский',st:'Строится', c:14,cr:0, a:[48,190],p:3.4,pr:0,   ph:'assets/img/jk-noviy.jpg'},
@@ -1009,10 +1491,10 @@ const SLIDES=[
  },
  {
    big:true,
-   bg:'assets/img/jk-geroi-1.jpg', fx:'brightness(.52) saturate(1.08)',
+   bg:'assets/img/jk-geroi-1.webp', fx:'brightness(.52) saturate(1.08)',
    tags:[[ICO.pct,'Условие месяца'],[ICO.rub,'первый взнос 30%']],
    title:'Рассрочка&nbsp;0%<br>на&nbsp;12&nbsp;месяцев',
-   lead:'Без переплаты, без справок о доходе и поручителей. График платежей подбираем под выручку вашего бизнеса.',
+   lead:'Без переплаты, без справок о доходе и поручителей. <br>График платежей подбираем под выручку вашего бизнеса.',
    cta:'Условия рассрочки', href:'#offers'
  },
  {
@@ -1020,7 +1502,7 @@ const SLIDES=[
    bg:'assets/img/jk-bereg-volgi.jpg',
    tags:[[ICO.key,'Готово к заезду'],[ICO.pin,'8 комплексов']],
    title:'Помещения<br>с&nbsp;отделкой <em>−25%</em>',
-   lead:'Стяжка, штукатурка, электрика и сантехника готовы. Остаётся оформить витрину под бренд.',
+   lead:'Стяжка, штукатурка, электрика и сантехника готовы.<br>Остаётся оформить витрину под бренд.',
    cta:'Смотреть помещения с отделкой', href:'#catalog'
  },
  {
@@ -1028,7 +1510,7 @@ const SLIDES=[
    bg:'assets/img/jk-severniy.jpg',
    tags:[[ICO.clk,'до 15 августа'],[ICO.rub,'бесплатно']],
    title:'Фиксация цены<br>на&nbsp;14&nbsp;дней',
-   lead:'Бронируем выбранный лот и держим цену, пока вы считаете экономику и согласуете кредит.',
+   lead:'Бронируем выбранный лот и держим цену, <br>пока вы считаете экономику и согласуете кредит.',
    cta:'Забронировать лот', href:'#contacts'
  }
 ];
@@ -1093,6 +1575,28 @@ stage.addEventListener('touchend',e=>{
 document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(timer):restart());
 
 restart();
+
+/* ═══════════════ СЛАЙДЕР «ПОД КАКОЙ БИЗНЕС» ═══════════════ */
+(function(){
+  const track=document.getElementById('bizTrack'), prev=document.getElementById('bizPrev'), next=document.getElementById('bizNext');
+  if(!track||!prev||!next) return;
+  const step=()=>{
+    const card=track.querySelector('.bizc');
+    if(!card) return 0;
+    const gap=parseFloat(getComputedStyle(track).gap)||0;
+    return card.getBoundingClientRect().width+gap;
+  };
+  const update=()=>{
+    const max=track.scrollWidth-track.clientWidth-2;
+    prev.disabled=track.scrollLeft<=2;
+    next.disabled=track.scrollLeft>=max;
+  };
+  prev.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:'smooth'}));
+  next.addEventListener('click',()=>track.scrollBy({left:step(),behavior:'smooth'}));
+  track.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
 
 /* ═══════════════ ФИЛЬТР ═══════════════ */
 /* Детерминированный набор лотов из данных ЖК — чтобы счётчик был честным */
@@ -1401,6 +1905,44 @@ const JK_MAP=[
     $('#mZoomOut').addEventListener('click',()=>map.setLocation({zoom:map.zoom-1,duration:200}));
   })();
 })();
+
+/* ═══════════════ ЧАСТЫЕ ВОПРОСЫ ═══════════════ */
+const FAQ=[
+ {q:'Можно ли купить помещение в ипотеку для бизнеса?',
+  a:'Да. Работаем с шестью банками-партнёрами. Ставка от 1,25% в первый год по программам застройщика, первоначальный взнос от 20%. Подберём условия под ИП или ООО.'},
+ {q:'Что входит в «готовое помещение с отделкой»?',
+  a:'Стяжка пола, оштукатуренные стены, разводка электрики до щита, окна и входная группа, санузел с подведёнными коммуникациями, приточная вентиляция. Остаётся чистовая отделка под ваш бренд.'},
+ {q:'Как узнать реальную проходимость?',
+  a:'На странице каждого ЖК есть замер потока по входным группам в будний день и данные по количеству квартир. По запросу пришлём детализацию по часам и точкам замера.'},
+ {q:'Можно ли объединить два соседних помещения?',
+  a:'Да, если они разделены ненесущей перегородкой. На этапе строительства объединение согласуется бесплатно, после ввода — через проект перепланировки.'},
+ {q:'Помогаете ли найти арендатора после покупки?',
+  a:'Да, для наших покупателей это бесплатно. Средний срок экспозиции по нашим объектам — полтора месяца.'},
+ {q:'Какая мощность доступна и можно ли увеличить?',
+  a:'Базово от 15 до 60 кВт в зависимости от лота. Увеличение возможно на этапе строительства по техусловиям — уточняйте по конкретному помещению.'},
+ {q:'Какие документы нужны для сделки?',
+  a:'Для ИП — паспорт, свидетельство ИП, ИНН. Для ООО — устав, решение о назначении директора, выписка ЕГРЮЛ. Для физлица — паспорт и согласие супруга.'},
+ {q:'Есть ли комиссия агентства?',
+  a:'Нет. Мы официальный партнёр застройщиков, комиссию платит застройщик. Для покупателя цена не отличается от прямой покупки.'}
+];
+(function(){
+  const grid=$('#faqGrid');
+  if(!grid)return;
+  grid.innerHTML=FAQ.map((f,i)=>`
+    <div class="faqi">
+      <button type="button" class="faqi__q" aria-expanded="false">
+        <span>${f.q}</span><span class="faqi__ic"></span>
+      </button>
+      <div class="faqi__a"><div><p>${f.a}</p></div></div>
+    </div>`).join('');
+  grid.addEventListener('click',e=>{
+    const btn=e.target.closest('.faqi__q'); if(!btn)return;
+    const item=btn.closest('.faqi');
+    const on=item.classList.toggle('on');
+    btn.setAttribute('aria-expanded',on);
+  });
+})();
+
 </script>
 </body>
 </html>

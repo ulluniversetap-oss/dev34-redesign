@@ -258,7 +258,7 @@ ul{margin:0;padding:0;list-style:none}
   padding-bottom:1px;margin-bottom:-1px}
 .pills::-webkit-scrollbar{display:none}
 .pill{flex:none}
-.pill{height:46px;padding:0 clamp(13px,1.15vw,20px);border-radius:var(--r-pill);border:1px solid var(--line-2);
+.pill{height:46px;padding:0 clamp(13px,1.15vw,20px);border-radius:var(--r-pill);border:1px solid transparent;
   font-size:14.5px;font-weight:500;color:var(--ink-2);transition:var(--t-fast) var(--e);white-space:nowrap}
 .pill:hover{border-color:var(--gold);color:var(--ink)}
 .pill.on{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:600;
@@ -446,7 +446,7 @@ ul{margin:0;padding:0;list-style:none}
   transform:scale(1.04);transition:transform 900ms var(--e)}
 .prk--photo:hover .prk__bg{transform:scale(1.1)}
 .prk--photo::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(190deg, rgba(10,14,19,.1) 0%, rgba(10,14,19,.56) 72%, rgba(10,14,19,.74) 100%)}
+  background:linear-gradient(190deg, rgba(10,14,19,.46) 0%, rgba(10,14,19,.58) 72%, rgba(10,14,19,.78) 100%)}
 
 .prk h3{font-size:clamp(19px,1.7vw,24px);font-weight:700;letter-spacing:-.022em;line-height:1.18;max-width:16ch}
 .prk--hero h3{max-width:22ch}
@@ -455,6 +455,7 @@ ul{margin:0;padding:0;list-style:none}
 .prk__ft p{font-size:13.5px;line-height:1.5;max-width:30ch}
 .prk--photo .prk__ft p,.prk--accent .prk__ft p{color:rgba(255,255,255,.72)}
 .prk--soft .prk__ft p{color:var(--ink-3)}
+.prk--soft.prk--photo .prk__ft p{color:rgba(255,255,255,.72)}
 .prk__arrow{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;
   background:#fff;color:var(--ink);transition:var(--t-fast) var(--e)}
 .prk__arrow svg{width:13px;transition:transform var(--t) var(--e)}
@@ -605,7 +606,8 @@ ul{margin:0;padding:0;list-style:none}
 .ofc4__keys img{width:100%;height:auto;display:block}
 
 .ofc4__price{font-size:clamp(28px,2.4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1}
-.ofc4__price b{color:var(--gold);font-weight:700}
+.ofc4__price b{font-weight:700}
+.ofc4__price-gold{color:var(--gold)}
 .ofc4__sub{font-size:13px;line-height:1.45;color:rgba(255,255,255,.56);margin-top:9px}
 
 .ofc4 .ofc__label{font-size:13.5px;font-weight:500}
@@ -718,10 +720,8 @@ ul{margin:0;padding:0;list-style:none}
 .tp__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;
   transition:transform calc(var(--t) * 2.4) var(--e)}
 .tp:hover .tp__bg{transform:scale(1.045)}
-.tp::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse 60% 50% at 90% 6%, rgba(205,162,75,.38), transparent 62%)}
 .tp::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(190deg, rgba(10,14,19,.1) 0%, rgba(10,14,19,.86) 68%, rgba(10,14,19,.97) 100%)}
+  background:linear-gradient(190deg, rgba(10,14,19,.0825) 0%, rgba(10,14,19,.71) 68%, rgba(10,14,19,.8) 100%)}
 .tp__badge{position:absolute;top:clamp(22px,2vw,30px);left:clamp(22px,2vw,30px);right:clamp(22px,2vw,30px);
   display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.015em;
   color:var(--gold);padding:6px 11px 6px 9px;border-radius:var(--r-pill);width:fit-content;max-width:100%;
@@ -1041,9 +1041,9 @@ ul{margin:0;padding:0;list-style:none}
 
     <div class="ofgrid4">
       <a href="#catalog" class="ofc ofc4 ofc4--photo">
-        <div class="ofc4__bg" style="background-image:url('assets/img/jk-noviy.jpg')"></div>
+        <div class="ofc4__bg" style="background-image:url('assets/img/promo-450.jpg')"></div>
         <div class="ofc4__head">
-          <div class="ofc4__price">450 <b>₽ за м²</b></div>
+          <div class="ofc4__price"><span class="ofc4__price-gold">450 ₽</span> <b>за м²</b></div>
           <div class="ofc__label">Первый месяц аренды</div>
           <div class="ofc4__sub">в ЖК «Новый» и ЖК «Герои поколений»</div>
         </div>
@@ -1140,44 +1140,60 @@ ul{margin:0;padding:0;list-style:none}
   </div>
 </section>
 
-<!-- ═══ 05 · ПОЧЕМУ ВЫБИРАЮТ НАС ═══ -->
-<section class="sect sect--white">
+<!-- ═══ 06 · ЧТО ПОЛУЧАЕТ ВАШ БИЗНЕС ═══ -->
+<section class="sect sect--white" id="perks">
   <div class="wrap">
     <div class="shead">
       <div>
-        <h2>Почему выбирают нас</h2>
-        <p>Не посредник, а эксклюзивный канал продаж коммерции<br>в жилых комплексах Волгограда.</p>
+        <h2>Что получает ваш бизнес</h2>
+        <p>Расположение, безопасность и планировка — продуманы ещё на этапе проектирования ЖК.</p>
       </div>
     </div>
 
-    <div class="trustbento2">
-      <div class="tp">
-        <div class="tp__bg" style="background-image:url('assets/img/jk-gvardeyskaya.jpg')"></div>
-        <span class="tp__badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5 14 4v4.3c0 3.8-2.6 6.9-6 7.7-3.4-.8-6-3.9-6-7.7V4l6-2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Эксклюзивный партнёр</span>
-        <h3>Знаем рынок Волгограда изнутри</h3>
-        <p>«А+ Бутик недвижимости» — эксклюзивный<br>партнёр восьми застройщиков региона.<br>Все коммерческие площади в наших<br>ЖК проходят через нас.</p>
-        <a href="#catalog" class="tp__link">Смотреть каталог помещений<span><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    <div class="perksgrid">
+      <div class="prk prk--hero prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-traffic.png')"></div>
+        <h3>Локации с большим<br>трафиком</h3>
+        <div class="prk__ft">
+          <p>Постоянный поток жителей района<br>и оживлённые прогулочные зоны</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
       </div>
 
-      <div class="tc tc--accent">
-        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M18.5 5.5 5.5 18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></div>
-        <h4>Это выгодно</h4>
-        <p>Ипотека для бизнеса от партнёров,<br>скидка при 100% оплате, рассрочка без переплат.</p>
+      <div class="prk prk--hero2 prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-schools.png')"></div>
+        <h3>Муниципальные школы<br>и детские сады</h3>
+        <div class="prk__ft">
+          <p>Ежедневный гарантированный поток родителей рядом с вашей точкой</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
       </div>
-      <div class="tc">
-        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5 4 6v6.3c0 5 3.5 9.4 8 10.5 4.5-1.1 8-5.5 8-10.5V6l-8-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.3 12 2.6 2.6 5-5.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Это безопасно</h4>
-        <p>Все сделки проходят по 214-ФЗ с защитой средств на эскроу-счетах. Декларации доступны <a href="#">на наш.дом.рф</a></p>
+
+      <div class="prk prk--soft prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-fire.png')"></div>
+        <h3>Система пожарной<br>сигнализации</h3>
+        <div class="prk__ft">
+          <p>Распознаёт возгорание на ранней стадии по дыму, теплу и пламени</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
       </div>
-      <div class="tc">
-        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5c-2.8 3.2-5.6 4.3-5.6 7.8a5.6 5.6 0 0 0 11.2 0c0-3.5-2.8-4.6-5.6-7.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-        <h4>Это просто</h4>
-        <p>Готовые решения под любой бюджет: от 45 м² под ПВЗ до 420 м² для федерального арендатора. Документы — онлайн.</p>
+
+      <div class="prk prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-security.png')"></div>
+        <h3>Охраняемая<br>территория</h3>
+        <div class="prk__ft">
+          <p>Круглосуточная охрана территории<br>с системой видеонаблюдения</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
       </div>
-      <div class="tc">
-        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 18 10 11l4 4 6.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 8h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Это ликвидно</h4>
-        <p>Помещения на первой линии в районах с плотной застройкой. Средний срок поиска арендатора — полтора месяца.</p>
+
+      <div class="prk prk--accent prk--photo">
+        <div class="prk__bg" style="background-image:url('assets/img/perk-layouts.png')"></div>
+        <h3>Разнообразие<br>планировок</h3>
+        <div class="prk__ft">
+          <p>Подберём или разработаем планировку под любые задачи вашего бизнеса</p>
+          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
       </div>
     </div>
   </div>
@@ -1311,58 +1327,44 @@ ul{margin:0;padding:0;list-style:none}
   </div>
 </section>
 
-<!-- ═══ 06 · ЧТО ПОЛУЧАЕТ ВАШ БИЗНЕС ═══ -->
-<section class="sect sect--white" id="perks">
+<!-- ═══ 05 · ПОЧЕМУ ВЫБИРАЮТ НАС ═══ -->
+<section class="sect sect--white">
   <div class="wrap">
     <div class="shead">
       <div>
-        <h2>Что получает ваш бизнес</h2>
-        <p>Расположение, безопасность и планировка — продуманы ещё на этапе проектирования ЖК.</p>
+        <h2>Почему выбирают нас</h2>
+        <p>Не посредник, а эксклюзивный канал продаж коммерции<br>в жилых комплексах Волгограда.</p>
       </div>
     </div>
 
-    <div class="perksgrid">
-      <div class="prk prk--hero prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-traffic.jpg')"></div>
-        <h3>Локации с большим<br>трафиком</h3>
-        <div class="prk__ft">
-          <p>Постоянный поток жителей района<br>и оживлённые прогулочные зоны</p>
-          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
+    <div class="trustbento2">
+      <div class="tp">
+        <div class="tp__bg" style="background-image:url('assets/img/promo-market-night2.jpg')"></div>
+        <span class="tp__badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5 14 4v4.3c0 3.8-2.6 6.9-6 7.7-3.4-.8-6-3.9-6-7.7V4l6-2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Эксклюзивный партнёр</span>
+        <h3>Знаем рынок Волгограда изнутри</h3>
+        <p>«А+ Бутик недвижимости» — эксклюзивный<br>партнёр восьми застройщиков региона.<br>Все коммерческие площади в наших<br>ЖК проходят через нас.</p>
+        <a href="#catalog" class="tp__link">Смотреть каталог помещений<span><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
       </div>
 
-      <div class="prk prk--hero2 prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-schools.jpg')"></div>
-        <h3>Муниципальные школы<br>и детские сады</h3>
-        <div class="prk__ft">
-          <p>Ежедневный гарантированный поток родителей рядом с вашей точкой</p>
-          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
+      <div class="tc tc--accent">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M18.5 5.5 5.5 18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h4>Это выгодно</h4>
+        <p>Ипотека для бизнеса от партнёров,<br>скидка при 100% оплате, рассрочка без переплат.</p>
       </div>
-
-      <div class="prk prk--soft">
-        <h3>Система пожарной<br>сигнализации</h3>
-        <div class="prk__ft">
-          <p>Распознаёт возгорание на ранней стадии по дыму, теплу и пламени</p>
-          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
+      <div class="tc">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5 4 6v6.3c0 5 3.5 9.4 8 10.5 4.5-1.1 8-5.5 8-10.5V6l-8-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.3 12 2.6 2.6 5-5.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Это безопасно</h4>
+        <p>Все сделки проходят по 214-ФЗ с защитой средств на эскроу-счетах. Декларации доступны <a href="#">на наш.дом.рф</a></p>
       </div>
-
-      <div class="prk prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-security.jpg')"></div>
-        <h3>Охраняемая<br>территория</h3>
-        <div class="prk__ft">
-          <p>Круглосуточная охрана территории<br>с системой видеонаблюдения</p>
-          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
+      <div class="tc">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5c-2.8 3.2-5.6 4.3-5.6 7.8a5.6 5.6 0 0 0 11.2 0c0-3.5-2.8-4.6-5.6-7.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h4>Это просто</h4>
+        <p>Готовые решения под любой бюджет: от 45 м² под ПВЗ до 420 м² для федерального арендатора. Документы — онлайн.</p>
       </div>
-
-      <div class="prk prk--accent">
-        <h3>Разнообразие<br>планировок</h3>
-        <div class="prk__ft">
-          <p>Подберём или разработаем планировку под любые задачи вашего бизнеса</p>
-          <span class="prk__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
+      <div class="tc">
+        <div class="tc__i"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 18 10 11l4 4 6.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 8h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Это ликвидно</h4>
+        <p>Помещения на первой линии в районах с плотной застройкой. Средний срок поиска арендатора — полтора месяца.</p>
       </div>
     </div>
   </div>

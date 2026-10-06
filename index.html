@@ -258,7 +258,7 @@ ul{margin:0;padding:0;list-style:none}
   padding-bottom:1px;margin-bottom:-1px}
 .pills::-webkit-scrollbar{display:none}
 .pill{flex:none}
-.pill{height:46px;padding:0 clamp(13px,1.15vw,20px);border-radius:var(--r-pill);border:1px solid transparent;
+.pill{height:46px;padding:0 clamp(13px,1.15vw,20px);border-radius:var(--r-pill);border:1px solid var(--line-2);
   font-size:14.5px;font-weight:500;color:var(--ink-2);transition:var(--t-fast) var(--e);white-space:nowrap}
 .pill:hover{border-color:var(--gold);color:var(--ink)}
 .pill.on{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:600;
@@ -381,9 +381,10 @@ ul{margin:0;padding:0;list-style:none}
 /* ═══════════════════════════════════════════════════════════
    02b · ПОД КАКОЙ БИЗНЕС ПОДОЙДЁТ ПОМЕЩЕНИЕ
    ═══════════════════════════════════════════════════════════ */
-.bizslider{position:relative;margin:-10px -26px -34px}
+.bizslider{position:relative;margin:-30px calc(-1 * var(--pad)) -70px}
 .bizgrid{--bizgap:clamp(16px,1.6vw,22px);display:flex;gap:var(--bizgap);overflow-x:auto;
-  scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:10px 26px 34px}
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:30px var(--pad) 70px;
+  scroll-padding-left:var(--pad)}
 .bizgrid::-webkit-scrollbar{display:none}
 
 /* ── навигация слайдера: пара круглых кнопок рядом с заголовком блока ── */
@@ -437,7 +438,7 @@ ul{margin:0;padding:0;list-style:none}
 .prk--hero2{grid-row:1/4;grid-column:2}
 
 .prk--soft{background:var(--bg-2)}
-.prk--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.1)}
+.prk--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.12)}
 .prk--accent{background:linear-gradient(155deg, var(--gold) 0%, var(--gold-dp) 100%);color:#fff}
 .prk--accent:hover{box-shadow:0 20px 44px rgba(205,162,75,.32)}
 .prk--photo{color:#fff}
@@ -481,7 +482,7 @@ ul{margin:0;padding:0;list-style:none}
 .dealc{position:relative;background:#fff;border-radius:var(--r-bento);
   padding:clamp(24px,2vw,30px) clamp(22px,1.9vw,26px);box-shadow:0 1px 0 var(--line);
   transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
-.dealc:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(15,21,27,.1)}
+.dealc:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(15,21,27,.12)}
 
 .dealc__n{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
   border-radius:50%;background:var(--gold-tint);color:var(--gold-dp);font-size:14px;font-weight:700;
@@ -581,7 +582,7 @@ ul{margin:0;padding:0;list-style:none}
 .ofc4{min-height:307px;padding:clamp(22px,1.8vw,28px);display:flex;flex-direction:column;
   justify-content:space-between}
 .ofc4--soft{background:var(--bg-2)}
-.ofc4--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.1)}
+.ofc4--soft:hover{box-shadow:0 20px 44px rgba(15,21,27,.12)}
 .ofc4--photo{color:#fff}
 .ofc4--photo:hover{box-shadow:0 20px 44px rgba(15,21,27,.22)}
 .ofc4__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;
@@ -740,7 +741,7 @@ ul{margin:0;padding:0;list-style:none}
 .tc{position:relative;overflow:hidden;background:var(--bg-2);border-radius:var(--r-bento);
   padding:clamp(22px,1.9vw,27px);display:flex;flex-direction:column;
   transition:transform var(--t) var(--e), box-shadow var(--t) var(--e)}
-.tc:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(15,21,27,.1)}
+.tc:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(15,21,27,.12)}
 .tc__i{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--gold-dp);
   display:grid;place-items:center;flex:none;box-shadow:0 1px 0 var(--line);
   transition:background var(--t-fast) var(--e), color var(--t-fast) var(--e), transform var(--t) var(--e)}
@@ -1060,9 +1061,9 @@ ul{margin:0;padding:0;list-style:none}
         </div>
         <div class="ofc4__top">
           <div class="ofc__avatars">
-            <img src="assets/img/jk-geroi-1.webp" alt="">
-            <img src="assets/img/jk-bereg-volgi.jpg" alt="">
-            <img src="assets/img/jk-semeyniy.jpg" alt="">
+            <img src="assets/img/jk-geroi-1.webp" alt="" loading="lazy">
+            <img src="assets/img/jk-bereg-volgi.jpg" alt="" loading="lazy">
+            <img src="assets/img/jk-semeyniy.jpg" alt="" loading="lazy">
             <span class="ofc__avatars-more">+5</span>
           </div>
         </div>
@@ -1092,7 +1093,7 @@ ul{margin:0;padding:0;list-style:none}
           <div class="ofc__label">Покупка</div>
           <div class="ofc__value">от 35 000 ₽ за м²</div>
         </div>
-        <div class="ofc4__keys"><img src="assets/img/promo-keys.png" alt=""></div>
+        <div class="ofc4__keys"><img src="assets/img/promo-keys.png" alt="" loading="lazy"></div>
         <span class="ofc__arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
@@ -1152,7 +1153,7 @@ ul{margin:0;padding:0;list-style:none}
 
     <div class="perksgrid">
       <div class="prk prk--hero prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-traffic.png')"></div>
+        <div class="prk__bg" style="background-image:url('assets/img/perk-traffic.jpg')"></div>
         <h3>Локации с большим<br>трафиком</h3>
         <div class="prk__ft">
           <p>Постоянный поток жителей района<br>и оживлённые прогулочные зоны</p>
@@ -1161,7 +1162,7 @@ ul{margin:0;padding:0;list-style:none}
       </div>
 
       <div class="prk prk--hero2 prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-schools.png')"></div>
+        <div class="prk__bg" style="background-image:url('assets/img/perk-schools.jpg')"></div>
         <h3>Муниципальные школы<br>и детские сады</h3>
         <div class="prk__ft">
           <p>Ежедневный гарантированный поток родителей рядом с вашей точкой</p>
@@ -1170,7 +1171,7 @@ ul{margin:0;padding:0;list-style:none}
       </div>
 
       <div class="prk prk--soft prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-fire.png')"></div>
+        <div class="prk__bg" style="background-image:url('assets/img/perk-fire.jpg')"></div>
         <h3>Система пожарной<br>сигнализации</h3>
         <div class="prk__ft">
           <p>Распознаёт возгорание на ранней стадии по дыму, теплу и пламени</p>
@@ -1179,7 +1180,7 @@ ul{margin:0;padding:0;list-style:none}
       </div>
 
       <div class="prk prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-security.png')"></div>
+        <div class="prk__bg" style="background-image:url('assets/img/perk-security.jpg')"></div>
         <h3>Охраняемая<br>территория</h3>
         <div class="prk__ft">
           <p>Круглосуточная охрана территории<br>с системой видеонаблюдения</p>
@@ -1188,7 +1189,7 @@ ul{margin:0;padding:0;list-style:none}
       </div>
 
       <div class="prk prk--accent prk--photo">
-        <div class="prk__bg" style="background-image:url('assets/img/perk-layouts.png')"></div>
+        <div class="prk__bg" style="background-image:url('assets/img/perk-layouts.jpg')"></div>
         <h3>Разнообразие<br>планировок</h3>
         <div class="prk__ft">
           <p>Подберём или разработаем планировку под любые задачи вашего бизнеса</p>
@@ -1493,7 +1494,7 @@ const SLIDES=[
  },
  {
    big:true,
-   bg:'assets/img/hero-slide-2.png', fx:'brightness(.52) saturate(1.08)',
+   bg:'assets/img/hero-slide-2.jpg', fx:'brightness(.52) saturate(1.08)',
    tags:[[ICO.pct,'Условие месяца'],[ICO.rub,'первый взнос 30%']],
    title:'Рассрочка&nbsp;0%<br>на&nbsp;12&nbsp;месяцев',
    lead:'Без переплаты, без справок о доходе и поручителей. <br>График платежей подбираем под выручку вашего бизнеса.',

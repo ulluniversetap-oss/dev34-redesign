@@ -287,9 +287,10 @@ ul{margin:0;padding:0;list-style:none}
 .planc__area span{font-weight:500;color:var(--ink-3);font-size:13px}
 .planc__price{font-size:14.5px;font-weight:600;color:var(--ink-2);white-space:nowrap}
 
-.planc__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.planc__tags{display:flex;flex-wrap:nowrap;gap:6px;margin-top:13px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.planc__tags::-webkit-scrollbar{display:none}
 .ptag{display:inline-flex;align-items:center;height:25px;padding:0 10px;border-radius:var(--r-pill);
-  background:var(--bg-2);color:var(--ink-2);font-size:11.5px;font-weight:500;letter-spacing:-.005em;white-space:nowrap}
+  background:var(--bg-2);color:var(--ink-2);font-size:11.5px;font-weight:500;letter-spacing:-.005em;white-space:nowrap;flex:none}
 
 .planc__ft{margin-top:auto;padding-top:18px}
 .planc__ft .btn{width:100%;height:46px;padding:0;font-size:14px}
@@ -662,9 +663,21 @@ ul{margin:0;padding:0;list-style:none}
       <!-- галерея-слайдер -->
       <div class="ogal" id="ogal">
         <div class="ogal__slide on">
-          <img src="../assets/img/jk-bereg-volgi.jpg" alt="ЖК «Берег Волги»">
+          <img src="../assets/img/bv-gal-1.jpg" alt="ЖК «Берег Волги»">
         </div>
-        <div class="ogal__count" id="ogalCount">1 / 1</div>
+        <div class="ogal__slide">
+          <img src="../assets/img/bv-gal-2.jpg" alt="ЖК «Берег Волги»" loading="lazy">
+        </div>
+        <div class="ogal__slide">
+          <img src="../assets/img/bv-gal-3.jpg" alt="ЖК «Берег Волги»" loading="lazy">
+        </div>
+        <div class="ogal__slide">
+          <img src="../assets/img/bv-gal-4.jpg" alt="ЖК «Берег Волги»" loading="lazy">
+        </div>
+        <div class="ogal__slide">
+          <img src="../assets/img/bv-gal-5.jpg" alt="ЖК «Берег Волги»" loading="lazy">
+        </div>
+        <div class="ogal__count" id="ogalCount">1 / 5</div>
         <button class="ogal__arrow ogal__arrow--l" id="ogalPrev" aria-label="Предыдущее фото">
           <svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>

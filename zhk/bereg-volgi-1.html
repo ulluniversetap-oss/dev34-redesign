@@ -1240,7 +1240,7 @@ const JK_SITE={n:'Берег Волги',addr:'ул. Степана Разина
       poiMarkers=[];
       POI.forEach((p,i)=>{
         for(let k=0;k<p.c;k++){
-          const dLat=(rnd()-0.5)*0.024, dLng=(rnd()-0.5)*0.034;
+          const dLat=(rnd()-0.2)*0.024, dLng=(rnd()-0.88)*0.034;
           const el=document.createElement('div');
           el.className='lpin2';
           el.style.background=p.color;
